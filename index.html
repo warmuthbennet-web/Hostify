@@ -1,29 +1,14 @@
-<h1>Willkommen</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hosting Panel</title>
+</head>
 
-<input id="user" placeholder="Email">
-<input id="pass" type="password" placeholder="Passwort">
+<body>
 
-<button onclick="login()">Einloggen</button>
-<button onclick="register()">Registrieren</button>
+<h1>Willkommen :)</h1>
 
-<script>
-async function register(){
- await fetch("/register",{method:"POST",
- headers:{"Content-Type":"application/json"},
- body:JSON.stringify({username:user.value,password:pass.value})
- })
- alert("Registriert")
-}
+<p>Dein Hosting Panel läuft.</p>
 
-async function login(){
- let r=await fetch("/login",{method:"POST",
- headers:{"Content-Type":"application/json"},
- body:JSON.stringify({username:user.value,password:pass.value})
- })
- let d=await r.json()
- if(d.success){
-  localStorage.user=user.value
-  location="dashboard.html"
- }
-}
-</script>
+</body>
+</html>
