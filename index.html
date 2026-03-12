@@ -1,0 +1,29 @@
+<h1>Willkommen</h1>
+
+<input id="user" placeholder="Email">
+<input id="pass" type="password" placeholder="Passwort">
+
+<button onclick="login()">Einloggen</button>
+<button onclick="register()">Registrieren</button>
+
+<script>
+async function register(){
+ await fetch("/register",{method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({username:user.value,password:pass.value})
+ })
+ alert("Registriert")
+}
+
+async function login(){
+ let r=await fetch("/login",{method:"POST",
+ headers:{"Content-Type":"application/json"},
+ body:JSON.stringify({username:user.value,password:pass.value})
+ })
+ let d=await r.json()
+ if(d.success){
+  localStorage.user=user.value
+  location="dashboard.html"
+ }
+}
+</script>
